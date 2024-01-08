@@ -1,0 +1,33 @@
+syntax="proto3";
+option java_package="org.example.tp6ace.stub";
+service PatientService {
+  rpc getAllPatients(GetAllPatientRequest) returns (GetAllPatientResponse);
+  rpc getPatientById(GetPatientByIdRequest) returns (GetPatientByIdResponse);
+  rpc addPatient(AddPatientRequest) returns (AddPatientResponse);
+}
+
+message GetAllPatientRequest {}
+message GetAllPatientResponse {
+  repeated Patient patients = 1;
+}
+message Patient {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
+message GetPatientByIdRequest {
+  int64 id = 1;
+}
+message GetPatientByIdResponse {
+  Patient patient = 1;
+}
+message PatientRequest {
+  string name = 1;
+  string email = 2;
+}
+message AddPatientRequest {
+  PatientRequest patient = 1;
+}
+message AddPatientResponse {
+  Patient patient = 1;
+}
